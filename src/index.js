@@ -1,7 +1,4 @@
 
-import { Dartboard } from './dartboard';
+import { Dartboard } from './dartboard'
 
-export {
-  Dartboard as default,
-  Dartboard
-}
+window.Dartboard = Dartboard
