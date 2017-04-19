@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "mkdir -p build && WEBPACK_ENV=production webpack && ncp src/static/ build/"
+    "build": "webpack --progress --profile --colors",
+    "release": "webpack --env=production --progress --profile --colors"
   },
   "repository": {
     "type": "git",
