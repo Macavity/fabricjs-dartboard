@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --progress --profile --colors",
-    "release": "webpack --env=production --progress --profile --colors"
+    "release": "npm run lint && webpack --env=production --progress --profile --colors",
+    "lint": "eslint src/"
   },
   "repository": {
     "type": "git",
