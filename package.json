@@ -2,9 +2,9 @@
   "name": "fabricjs-dartboard",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,12 @@
     "url": "https://github.com/Macavity/fabricjs-dartboard/issues"
   },
   "homepage": "https://github.com/Macavity/fabricjs-dartboard#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.2"
   }
