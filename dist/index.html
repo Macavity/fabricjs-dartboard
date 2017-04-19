@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>webpack 2 demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.7/fabric.js"></script>
+    <script src="./dartboard.js"></script>
+</head>
+<body>
+<div class="content">
+    <canvas id="dartboard-canvas" ></canvas>
+    <script>
+        $(document).ready(function(){
+          new Dartboard("#dartboard-canvas");
+        });
+    </script>
+</div>
+</body>

@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "webpack-dev-server",
+    "build": "mkdir -p build && WEBPACK_ENV=production webpack && ncp src/static/ build/"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/Macavity/fabricjs-dartboard#readme",
   "dependencies": {},
   "devDependencies": {
+    "babel-loader": "^6.4.1",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.2.0",

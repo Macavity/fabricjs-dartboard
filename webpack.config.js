@@ -1,20 +1,26 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
-var config = {
-    context: path.join(__dirname, 'js'),
-    entry: [
-        './index.js',
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:8080/',
-    ],
-    output: {
-        path: path.join(__dirname, 'www'),
-        filename: 'bundle.js',
-        publicPath: '/',
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+let config = {
+  context: path.join(__dirname, 'src'),
+  entry: [
+    './index.js'
+  ],
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'dartboard.js',
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    overlay: true,
+  },
+  module: {
+    rules: [
+      { test: /\.(js|jsx)$/, use: 'babel-loader' },
     ]
-};
-module.exports = config;
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ]
+}
+module.exports = config
