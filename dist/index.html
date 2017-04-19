@@ -18,9 +18,11 @@
         <canvas id="dartboard-canvas"></canvas>
     </div>
     <script>
-        $(document).ready(function(){
-          new Dartboard("dartboard-canvas");
-        });
+      var dartboard;
+
+      $(document).ready(function(){
+        dartboard = new Dartboard("dartboard-canvas");
+      });
     </script>
 </div>
 </body>

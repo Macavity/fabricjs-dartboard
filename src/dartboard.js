@@ -3,7 +3,7 @@ const dartValuesSingle = [3, 19, 7, 16, 8, 11, 14, 9, 12, 5, 20, 1, 18, 4, 13, 6
 
 export class Dartboard {
   constructor (canvasId) {
-    const canvasElement = window.document.getElementById(canvasId);
+    const canvasElement = window.document.getElementById(canvasId)
 
     if (!canvasElement) {
       return
@@ -29,6 +29,10 @@ export class Dartboard {
     this.render()
   }
   
+  getCanvasObjects () {
+    return this.canvas.getObjects()
+  }
+  
   bindEvents () {
     this.canvas.on('mouse:down', (options) => {
       const target = options.target
@@ -41,6 +45,9 @@ export class Dartboard {
   }
   
   render () {
+    console.log('text labels')
+    console.table(this.textNumbers)
+    
     for (let x = 0; x < 20; x++) {
       this.canvas.add(this.singleNumbers[x])
     }
