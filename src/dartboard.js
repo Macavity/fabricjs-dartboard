@@ -1,8 +1,12 @@
 const dartValuesMulti = [6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5, 20, 1, 18, 4, 13]
 const dartValuesSingle = [3, 19, 7, 16, 8, 11, 14, 9, 12, 5, 20, 1, 18, 4, 13, 6, 10, 15, 2, 17]
 
+const defaultOptions = {
+  backgroundColor: 'transparent',
+}
+
 export class Dartboard {
-  constructor (canvasId) {
+  constructor (canvasId, options = {}) {
     this.canvasElement = window.document.getElementById(canvasId)
     this.wrapper = this.canvasElement.parentNode
 
@@ -10,10 +14,12 @@ export class Dartboard {
       return
     }
     
+    options = Object.assign(defaultOptions, options);
+    
     this.calculateDimensions()
   
     this.canvas = new fabric.Canvas(canvasId, {
-      backgroundColor: 'transparent',
+      backgroundColor: options.backgroundColor,
       width: this.width,
       height: this.height,
       selection: false,
