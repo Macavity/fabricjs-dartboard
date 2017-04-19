@@ -5,13 +5,18 @@ A clickable Dartboard build in the canvas.
 ## Usage
 
 ``` html
-    <canvas id="dartboard-canvas" ></canvas>
-    <script>
-        $(document).ready(function(){
-          new Dartboard("#dartboard-canvas");
-        });
-    </script>
+<canvas id="dartboard-canvas"></canvas>
+<script>
+    $(document).ready(function(){
+      new Dartboard("#dartboard-canvas");
+    });
+</script>
 ```
+
+## External Dependancies
+
+* [jQuery](http://jquery.com/)
+* [Fabric.js](http://fabricjs.com/)
 
 ## Local Development
 
