@@ -3,21 +3,17 @@ const dartValuesSingle = [3, 19, 7, 16, 8, 11, 14, 9, 12, 5, 20, 1, 18, 4, 13, 6
 
 export class Dartboard {
   constructor (canvasId) {
-    const canvasElement = window.document.getElementById(canvasId)
+    this.canvasElement = window.document.getElementById(canvasId)
+    this.wrapper = this.canvasElement.parentNode
 
-    if (!canvasElement) {
+    if (!this.canvasElement) {
       return
     }
-    console.log('Initialize Dartboard')
     
-    this.width = (canvasElement.parentElement.clientWidth)
-    this.height = (canvasElement.parentElement.clientWidth)
-    this.radiusBoard = 0.9 * (this.width / 2)
-    this.widthTriangle = this.radiusBoard * (170 / 200) * 2 * Math.tan(9 * Math.PI / 180)
-    this.heightTriangle = this.radiusBoard * (162 / 200) / Math.cos(9 * Math.PI / 180)
+    this.calculateDimensions()
   
     this.canvas = new fabric.Canvas(canvasId, {
-      backgroundColor: 'lightgrey',
+      backgroundColor: 'transparent',
       width: this.width,
       height: this.height,
       selection: false,
@@ -39,30 +35,47 @@ export class Dartboard {
       console.debug('Text', target.dartValue)
     })
   
-    window.addEventListener('resize', function () {
-      // TODO Redraw on window resize
+    window.addEventListener('resize', () => {
+      this.canvas.clear()
+      
+      this.calculateDimensions()
+      this.calculateShapes()
+      this.render()
     })
   }
   
   render () {
-    console.log('text labels')
-    console.table(this.textNumbers)
+    // Background
+    this.canvas.add(this.noScore)
     
+    // Shapes
     for (let x = 0; x < 20; x++) {
       this.canvas.add(this.singleNumbers[x])
     }
-  
+
     for (let x = 0; x < 20; x++) {
       this.canvas.add(this.trippleRing[x], this.doubleRing[x])
     }
-  
-    for (let x = 0; x < 20; x++) {
-      this.canvas.add(this.textNumbers[x])
+
+    for (const label of this.textNumbers) {
+      this.canvas.add(label)
     }
     
-    this.canvas.add(this.singleBull, this.bullsEye, this.noScore)
-  
+    // Bullseye
+    this.canvas.add(this.singleBull, this.bullsEye)
+    
+    // .. and render
     this.canvas.renderAll()
+  }
+  
+  calculateDimensions () {
+    this.width = (this.wrapper.clientWidth)
+    this.height = (this.wrapper.clientWidth)
+
+    this.radiusBoard = 0.9 * (this.width / 2)
+
+    this.widthTriangle = this.radiusBoard * (170 / 200) * 2 * Math.tan(9 * Math.PI / 180)
+    this.heightTriangle = this.radiusBoard * (162 / 200) / Math.cos(9 * Math.PI / 180)
   }
   
   calculateShapes () {
